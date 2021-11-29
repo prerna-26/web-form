@@ -1,0 +1,183 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  
+  <link href="global.css" type="text/css" rel="stylesheet">
+
+  <script src="cleave.js"></script>
+  <script src="cleave-phone.us.js"></script>
+
+  <title>Web Form</title>
+
+</head>
+
+
+<body>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"></script>
+
+
+
+
+
+  <div class="container-fluid bg">
+    <div class="row">
+
+      <div class="col-md-4 col-sm-4 col-xs-12"></div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+
+        <form class="form-container">
+          <div class="h1">Employee Form</div>
+          <div class="mb-3">
+
+            <label for="exampleInputName" class="form-label">Employee Name</label>
+            <input type="text" class="form-control" id="exampleInputName" />
+
+            <div id="errorUname"></div>
+
+
+          </div>
+
+          <div class="mb-3 chng">
+            <label for="exampleInputID" class="form-label">Employee ID</label>
+            <input type="text" class="form-control" id="exampleInputID">
+
+            <div id="errorUID"></div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputBirthdate" class="form-label">Birth Date</label>
+            <input type="text" class="form-control cleave-input-date" id="exampleInputBirthdate"
+              placeholder="MM-DD-YYYY">
+
+            <div id="errordob"></div>
+            <script>
+              var cleave = new Cleave('.cleave-input-date', {
+                date: true,
+                delimter: '/',
+                datePattern: ['m', 'd', 'Y']
+              });
+            </script>
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputGender" class="form-label">Gender</label>
+
+            <select id="exampleInputGender" class="exampleInputGender">
+              <option>Select Gender</option>
+              <option value="M">M</option>
+              <option value="F">F</option>
+              <option value="O">O</option>
+            </select>
+
+            <div id="errorgender"></div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputMobile" class="form-label">Mobile Number</label>
+            <input type="phone" class="form-control exampleInputMobile" id="exampleInputMobile">
+
+            <div id="errormob"></div>
+            <script>
+
+              var cleave = new Cleave('.exampleInputMobile', {
+                phone: true,
+                phoneRegionCode: 'US',
+              });
+            </script>
+
+
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputDepartment" class="form-label " id="exampleInputDepartment">Department</label>
+            <select id="Department" class="Department">
+              <option>Select Department</option>
+              <option value="IT">IT</option>
+              <option value="HR">HR</option>
+              <option value="MANAGEMENT">MANAGEMENT</option>
+            </select>
+            <div id="errordep"></div>
+          </div>
+          &nbsp;
+          <button type="button" id="entry" class="btn btn-success btn-block " onclick="AddRow()"
+            value="Add">Submit</button>
+
+        </form>
+
+
+      </div>
+
+
+
+
+    </div>
+
+    <input type="text" id="myInput" class="search-bar" onkeyup='tableSearch()' placeholder="          Search">
+
+    <table id="show">
+
+      <thead>
+
+        <tr>
+          <td>Employee Name</td>
+          <td>Employee ID</td>
+          <td>date Of Birth</td>
+          <td>Gender</td>
+          <td>Mobile Number</td>
+          <td>Department</td>
+        </tr>
+
+
+
+      </thead>
+    </table>
+
+
+
+  </div>
+
+  <script type="application/javascript">
+    function tableSearch() {
+      let input, filter, table, tr, td, txtValue;
+
+      //Intialising Variables
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("show");
+      tr = table.getElementsByTagName("tr");
+
+      for (let i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText || td.innerHTML;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+
+
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>
