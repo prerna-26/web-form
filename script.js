@@ -10,7 +10,7 @@ var list6 = [];
 
 var n = 1;
 var x = 0;
-
+// function for adding data
 function AddRow() {
   var AddRown = document.getElementById("show");
   var NewRow = AddRown.insertRow(n);
